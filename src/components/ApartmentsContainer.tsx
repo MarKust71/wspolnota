@@ -1,7 +1,8 @@
 import React, { useReducer } from 'react';
-import { Button, Container } from '@material-ui/core';
+import { Button, Container, createStyles } from '@material-ui/core';
 import { ApartmentInterface, Action } from './interface';
 import Apartment from './Apartment';
+import { makeStyles } from '@material-ui/core/styles';
 
 const apartments = [
     { apartment: 1, name: 'Mazurkiewicz', meters: [{ id: 1 }, { id: 2 }] },
@@ -42,24 +43,46 @@ const reducer = (state: any, action: Action) => {
 
 export function ApartmentsContainer() {
     const [state, dispatch] = useReducer(reducer, initValues(apartments));
+    const styles = useStyles();
     return (
-        <Container fixed>
-            {apartments.map(item => {
-                const { apartment, name, meters } = item;
-                return (
-                    <Apartment
-                        key={`apartment-${apartment}`}
-                        apartment={apartment}
-                        name={name}
-                        meters={meters}
-                        state={state}
-                        dispatch={dispatch}
-                    />
-                );
-            })}
-            <Button variant="contained" onClick={() => console.log(state)}>
+        <Container fixed maxWidth="xs" className={styles.container}>
+            <div className={styles.apartments}>
+                {apartments.map(item => {
+                    const { apartment, name, meters } = item;
+                    return (
+                        <Apartment
+                            key={`apartment-${apartment}`}
+                            apartment={apartment}
+                            name={name}
+                            meters={meters}
+                            state={state}
+                            dispatch={dispatch}
+                        />
+                    );
+                })}
+            </div>
+            <Button
+                variant="contained"
+                onClick={() => console.log(state)}
+                fullWidth
+            >
                 Wyślij
             </Button>
         </Container>
     );
 }
+
+const useStyles = makeStyles(() =>
+    createStyles({
+        container: {
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center'
+        },
+        apartments: {
+            height: 'calc(100vh - 40px)',
+            overflow: 'scroll'
+        },
+        button: {}
+    })
+);
