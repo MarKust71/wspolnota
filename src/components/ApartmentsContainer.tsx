@@ -80,8 +80,9 @@ const useStyles = makeStyles(() =>
             alignItems: 'center'
         },
         apartments: {
-            height: 'calc(100vh - 40px)',
-            overflow: 'scroll'
+            height: 'calc(100vh - 120px)',
+            overflow: 'scroll',
+            marginBottom: 10
         },
         button: {}
     })
