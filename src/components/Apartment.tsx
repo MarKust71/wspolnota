@@ -9,13 +9,21 @@ interface ApartmentInterfaceExtended extends ApartmentInterface {
     dispatch: Dispatch<Action>;
 }
 
-export default function Apartment(props: ApartmentInterfaceExtended) {
-    const { apartment, name, meters, state, dispatch } = props;
+export default function Apartment({
+    apartment,
+    name,
+    meters,
+    state,
+    dispatch
+}: ApartmentInterfaceExtended) {
     const styles = useStyles();
     return (
         <Card className={styles.card}>
             <CardContent className={styles.cardContent}>
-                {`Lokal #${apartment}: ${name}`}
+                <div className={styles.labelContainer}>
+                    <div> {`Lokal #${apartment}:`}</div>&nbsp;
+                    <div className={styles.labelName}> {`${name}`}</div>
+                </div>
                 <Box className={styles.box}>
                     {meters.map(item => {
                         const { id } = item;
@@ -47,6 +55,13 @@ const useStyles = makeStyles(() =>
             flexDirection: 'column',
             alignItems: 'center'
         },
-        card: {}
+        card: {},
+        labelContainer: {
+            display: 'flex',
+            flexDirection: 'row'
+        },
+        labelName: {
+            fontWeight: 700
+        }
     })
 );
