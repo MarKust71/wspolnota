@@ -77,11 +77,12 @@ const useStyles = makeStyles(() =>
         container: {
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center'
+            alignItems: 'center',
+            background: '#eae7dc'
         },
         apartments: {
             height: 'calc(100vh - 120px)',
-            overflow: 'scroll',
+            overflowY: 'scroll',
             marginBottom: 10
         },
         button: {}

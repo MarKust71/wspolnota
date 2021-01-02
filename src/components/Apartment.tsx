@@ -55,7 +55,11 @@ const useStyles = makeStyles(() =>
             flexDirection: 'column',
             alignItems: 'center'
         },
-        card: {},
+        card: {
+            background: '#d8c3a5',
+            marginBottom: 5,
+            borderRadius: 5
+        },
         labelContainer: {
             display: 'flex',
             flexDirection: 'row'

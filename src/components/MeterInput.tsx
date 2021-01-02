@@ -15,6 +15,7 @@ export default function MeterInput({
     return (
         <form className={classes.root} noValidate autoComplete="off">
             <TextField
+                className={classes.input}
                 id={`apartment-${apartment}-meter-${meter}`}
                 label={`Licznik #${meter}`}
                 variant="outlined"
@@ -39,6 +40,10 @@ const useStyles = makeStyles((theme: Theme) =>
                 margin: theme.spacing(1),
                 width: '15ch'
             }
+        },
+        input: {
+            background: '#eae7dc',
+            borderRadius: 5
         }
     })
 );
